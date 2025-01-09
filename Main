@@ -1,0 +1,18 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+
+driver = webdriver.Chrome()  # Usa o navegador Chrome
+driver.get("https://visa.vfsglobal.com")  # Acessa o site
+
+# Simula o preenchimento de um formulário
+input_field = driver.find_element(By.ID, "login-email")
+input_field.send_keys("email@example.com")
+input_field.send_keys(Keys.RETURN)
+
+time.sleep(2)  # Espera para evitar bloqueio por excesso de requisições
+
+# Tenta localizar vagas disponíveis
+check_vagas = driver.find_element(By.ID, "check-vagas")
+check_vagas.click()
